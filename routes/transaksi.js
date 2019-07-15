@@ -3,13 +3,13 @@ const Router = express.Router()
 const Model = require('../models')
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-const title = 'BAYARSPP Management'
-const typeTransaksi = ['SPP', 'Praktek']
-const bulanName = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+const { generate } = require('../helpers/generatePdf') 
+const {title, typeTransaksi, getMonth, bulanName } = require('../constant')
 
 Router.get('/', (req, res) => {
 	Model.Transaksi.findAll({
 		include: [Model.Siswa],
+		order: [['createdAt', 'DESC']]
 	})
 		.then(result => {
 			res.render('transaksi', {
@@ -54,11 +54,13 @@ Router.get('/edit/:id', (req, res) => {
 })
 
 Router.post('/add', (req, res) => {
+	generate()
 	const { id_siswa, tgl_bayar, bayar_tahun, type_bayar, bayar } = req.body
+	console.log(req.body['bayar_bulan[]'])
 	let objTransaksi = {
 		siswaId: id_siswa,
 		type_transaksi: type_bayar,
-		bayar_bulan: req.body['bayar_bulan[]'].join(','),
+		bayar_bulan: Array.isArray(req.body['bayar_bulan[]']) ? req.body['bayar_bulan[]'].join(',') : req.body['bayar_bulan[]'],
 		bayar_tahun,
 		tgl_bayar,
 		bayar,

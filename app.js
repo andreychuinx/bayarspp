@@ -10,9 +10,7 @@ const perkiraanRoutes = require('./routes/perkiraan')
 const logoutRoutes = require('./routes/logout')
 const userRoutes = require('./routes/user')
 const transaksiRoutes = require('./routes/transaksi')
-// const tempatRoutes = require('./routes/tempat')
-// const tempatBarangRoutes = require('./routes/tempatbarang')
-// const reqBarangRoutes = require('./routes/pemesanan')
+const tunggkanRoutes = require('./routes/tunggakan')
 const app = express()
 
 
@@ -40,10 +38,6 @@ app.use('/siswa', authSession.checkSession, siswaRoutes)
 app.use('/user', authSession.checkSession, userRoutes)
 app.use('/perkiraan', authSession.checkSession, perkiraanRoutes)
 app.use('/transaksi', authSession.checkSession, transaksiRoutes)
-// app.use('/barang', barangRoutes)
-// app.use('/tempat', authSession.checkSession, tempatRoutes)
-// app.use('/tempatbarang', tempatBarangRoutes)
-// app.use('/pemesanan', authSession.checkSession, reqBarangRoutes)
-
+app.use('/tunggakan', authSession.checkSession, tunggkanRoutes)
 
 app.listen(process.env.PORT || 3000, () => console.log('Example app listening on port 3000!'))

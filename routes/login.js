@@ -37,7 +37,6 @@ Router.post('/checkUser', (req, res) => {
           .then(() => {
             req.session.isLogin = true
             req.session.user = user
-            console.log(req.session, 'testt')
             res.redirect('/')
           })
         } else {

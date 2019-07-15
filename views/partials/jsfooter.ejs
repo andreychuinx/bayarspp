@@ -1,14 +1,36 @@
 <script src="/public/js/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/public/js/bootstrap.min.js"></script>
 <script src="/public/js/metisMenu.min.js"></script>
 <script src="/public/js/dataTables/jquery.dataTables.min.js"></script>
 <script src="/public/js/dataTables/dataTables.bootstrap.min.js"></script>
 <script src="/public/js/startmin.js"></script>
-
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+<script type="text/javascript" src="/public/js/bootstrap-select.min.js"></script>
 <script>
-  $(document).ready(function() {
+  $(document).ready(function () {
+    var date_tgl_lahir = $('input[name="tgl_lahir"]'); //our date input has the name "date"
+    var date_tgl_bayar = $('input[name="tgl_bayar"]'); //our date input has the name "date"
+    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+    var options = {
+      format: 'dd MM yyyy',
+      container: container,
+      todayHighlight: true,
+      autoclose: true,
+    };
+    date_tgl_lahir.datepicker(options);
+    date_tgl_bayar.datepicker(options);
     $('#dataTables-example').DataTable({
       responsive: true
     });
+    $("#picksiswa").change(function() {
+      $('#nis-text').text($('option:selected').attr('data-nis'));
+      $('#nama-text').text($('option:selected').attr('data-nama'));
+      $('#kelas-text').text($('option:selected').attr('data-kelas'));
+      $('#jurusan-text').text($('option:selected').attr('data-jurusan'));
+    }).change();
   });
 </script>

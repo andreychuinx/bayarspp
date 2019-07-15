@@ -10,15 +10,16 @@
       <li>
         <a href="#"><i class="fa fa-list-ul fa-fw"></i> Data Master<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
+            <li <% if (sidebar == 'user') { %> class="active" <% } %>>
+              <a href="/user">
+                <i class="fa fa-table fa-fw"></i>
+                User
+              </a>
+            </li>
           <li <% if (sidebar == 'siswa') { %> class="active" <% } %>>
             <a href="/siswa">
               <i class="fa fa-table fa-fw"></i>
               Siswa
-            </a>
-          </li>
-          <li <% if (sidebar == 'bendahara') { %> class="active" <% } %>>
-            <a href="/bendahara"><i class="fa fa-table fa-fw"></i>
-              Bendahara
             </a>
           </li>
           <li <% if (sidebar == 'perkiraan') { %> class="active" <% } %>>
@@ -31,14 +32,9 @@
         <a href="#"><i class="fa fa-list-ul fa-fw"></i> Data Transaksi<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
           <li <% if (sidebar == 'pembayaran') { %> class="active" <% } %>>
-            <a href="/pembayaran">
+            <a href="/transaksi">
               <i class="fa fa-table fa-fw"></i>
-              Pembayaran SPP
-            </a>
-          </li>
-          <li <% if (sidebar == 'tunggakan') { %> class="active" <% } %>>
-            <a href="/tunggakan">
-              <i class="fa fa-table fa-fw"></i> Tunggakan SPP
+              Transaksi
             </a>
           </li>
           <li <% if (sidebar == 'jurnal') { %> class="active" <% } %>>
@@ -54,13 +50,13 @@
           <li <% if (sidebar == 'laporan_pembayaran') { %> class="active" <% } %>>
             <a href="/laporan_pembayaran">
               <i class="fa fa-table fa-fw"></i>
-              Pembayaran SPP
+              Pembayaran
             </a>
           </li>
           <li <% if (sidebar == 'laporan_tunggakan') { %> class="active" <% } %>>
             <a href="/laporan_tunggakan">
               <i class="fa fa-table fa-fw"></i>
-              Tunggakan SPP
+              Tunggakan
             </a>
           </li>
           <li <% if (sidebar == 'laporan_penerimaan') { %> class="active" <% } %>>

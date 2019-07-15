@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
+    "username": "test",
     "password": "123!@#",
     "database": "bayarspp",
-    "host": "127.0.0.1",
+    "host": "35.240.149.163",
     "dialect": "mysql"
   }
 }

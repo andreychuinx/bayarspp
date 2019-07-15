@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include partials/metahead %>
+
+<body>
+  <div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <%- include partials/header %>
+      <%- include partials/sidebar %>
+    </nav>
+    <!-- End: Navigation -->
+    <%
+        var header = 'Add'
+        var action = 'add'
+        if(transaksi){
+          header = 'Edit'
+          action = `edit/${transaksi.id}`
+        }
+      %>
+    <!-- Page Content -->
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+
+            <h1 class="page-header"><%=header%> <%= title %></h1>
+            <!-- Alert Message -->
+            <% if (errMessage) { %>
+            <div class="alert alert-danger alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <%= errMessage %>
+            </div>
+            <% } %>
+
+            <div class="row">
+              <div class="col-md-12">
+                <form action="/transaksi/<%=action%>" method="post" role="form">
+                  <div class="form-group">
+                    <label>Siswa</label>
+                    <select class="selectpicker form-control" data-live-search="true" id="picksiswa" name="id_siswa">
+                      <option value="">--- Select One ---</option>
+                      <% siswa.forEach((sw) => { %>
+                      <option <% if (sw.id == transaksi.siswaId) { %> selected <% } %> 
+                        value="<%= sw.id%>"
+                        data-nis="<%=sw.nis%>"
+                        data-nama="<%=sw.nama%>"
+                        data-kelas="<%=sw.kelas%>"
+                        data-jurusan="<%=sw.jurusan%>"
+                      >
+                        <%= sw.nis%> - <%=sw.nama%></option>
+                      <% })  %>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="com-md-6">NIS Siswa: </label>
+                    <span id="nis-text" class="com-md-6"></span>
+                  </div>
+                  <div class="form-group">
+                    <label class="com-md-6">Nama Siswa: </label>
+                    <span id="nama-text" class="com-md-6"></span>
+                  </div>
+                  <div class="form-group">
+                    <label class="com-md-6">Kelas: </label>
+                    <span id="kelas-text" class="com-md-6"></span>
+                  </div>
+                  <div class="form-group">
+                    <label class="com-md-6">Jurusan: </label>
+                    <span id="jurusan-text" class="com-md-6"></span>
+                  </div>
+                  <div class="form-group">
+                    <label>Tgl Bayar</label>
+                    <input class="form-control" id="date" name="tgl_bayar" placeholder="MM/DD/YYY" type="text"
+                      value="<%= transaksi.tgl_bayar %>" />
+
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Type Transaksi</label>
+                    <select name="type_bayar" class="form-control" required>
+                      <option value="0">-- Select One --</option>
+                      <% type_transaksi.forEach((tt) => { %>
+                      <option <% if (tt == transaksi.type_bayar) { %> selected <% } %> value="<%= tt%>"><%= tt%>
+                      </option>
+                      <% })  %>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6" style="padding-left: 0%">
+                    <label>Bulan Bayar</label>
+                    <select class="selectpicker form-control" data-live-search="true" name="bayar_bulan[]" multiple>
+                      <option value="">--- Select ---</option>
+                      <% bulanName.forEach((bn) => { %>
+                      <option <% if (bn == transaksi.bayar_bulan) { %> selected <% } %> data-tokens="<%= bn%>"><%= bn%>
+                      </option>
+                      <% })  %>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6" style="padding-right: 0%">
+                      <label>Tahun</label>
+                      <input name="bayar_tahun" value="<%= transaksi.bayar_tahun %>" type="text" placeholder="Tahun"
+                        class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Total Bayar</label>
+                    <input name="bayar" value="<%= transaksi.bayar %>" type="text" placeholder="Total Bayar"
+                      class="form-control" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Save</button>
+                  <a href="/transaksi" class="btn btn-default">Cancel</a>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End: Page Content -->
+  </div> <!-- /#wrapper -->
+
+  <%- include partials/jsfooter %>
+</body>
+
+</html>

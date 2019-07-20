@@ -14,6 +14,7 @@
   $(document).ready(function () {
     var date_tgl_lahir = $('input[name="tgl_lahir"]'); //our date input has the name "date"
     var date_tgl_bayar = $('input[name="tgl_bayar"]'); //our date input has the name "date"
+    var date_tgl_jurnal = $('input[name="tgl_jurnal"]'); //our date input has the name "date"
     var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
     var options = {
       format: 'dd MM yyyy',
@@ -21,16 +22,40 @@
       todayHighlight: true,
       autoclose: true,
     };
+    var bayarSPP = 150000
+    var bayarPraktek = 100000
+    var jumlahBulanBayar = 0
+    var jumlahBayar = 0
+    var dataPicked = null
     date_tgl_lahir.datepicker(options);
     date_tgl_bayar.datepicker(options);
+    date_tgl_jurnal.datepicker(options);
     $('#dataTables-example').DataTable({
       responsive: true
     });
-    $("#picksiswa").change(function() {
+    $("#picksiswa").change(function () {
       $('#nis-text').text($('option:selected').attr('data-nis'));
       $('#nama-text').text($('option:selected').attr('data-nama'));
       $('#kelas-text').text($('option:selected').attr('data-kelas'));
       $('#jurusan-text').text($('option:selected').attr('data-jurusan'));
+    }).change();
+    $("#bayarbulan").change(function () {
+      jumlahBulanBayar = $("#bayarbulan :selected").length;
+      if (jumlahBulanBayar > 0 && dataPicked === 'SPP') {
+        jumlahBayar = bayarSPP * jumlahBulanBayar
+      } else if (jumlahBulanBayar > 0 && dataPicked === 'Praktek') {
+        jumlahBayar = bayarPraktek * jumlahBulanBayar
+      }
+      document.getElementById("jumlah").value = jumlahBayar;
+    }).change()
+    $("#typetransaksi").change(function () {
+      dataPicked = $(this).find(':selected').data('id')
+      if (dataPicked === 'SPP') {
+        jumlahBayar = jumlahBulanBayar * bayarSPP
+      } else if (dataPicked === 'Praktek') {
+        jumlahBayar = jumlahBulanBayar * bayarPraktek
+      }
+      document.getElementById("jumlah").value = jumlahBayar;
     }).change();
   });
 </script>

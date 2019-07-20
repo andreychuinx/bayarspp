@@ -11,6 +11,9 @@ module.exports = {
       siswaId: {
         type: Sequelize.INTEGER
       },
+      bendaharaId: {
+        type: Sequelize.INTEGER
+      },
       type_transaksi: {
         type: Sequelize.STRING
       },
@@ -23,7 +26,7 @@ module.exports = {
       tgl_bayar: {
         type: Sequelize.DATE
       },
-      bayar: {
+      jumlah: {
         type: Sequelize.INTEGER
       },
       createdAt: {

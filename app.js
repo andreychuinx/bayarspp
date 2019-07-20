@@ -8,9 +8,10 @@ const loginRoutes = require('./routes/login')
 const siswaRoutes = require('./routes/siswa')
 const perkiraanRoutes = require('./routes/perkiraan')
 const logoutRoutes = require('./routes/logout')
-const userRoutes = require('./routes/user')
+const bendaharaRoutes = require('./routes/bendahara')
 const transaksiRoutes = require('./routes/transaksi')
 const tunggkanRoutes = require('./routes/tunggakan')
+const jurnalRoutes = require('./routes/jurnal')
 const app = express()
 
 
@@ -29,15 +30,16 @@ app.use('/login', loginRoutes)
 app.use('/logout', logoutRoutes)
 
 app.use((req, res, next) => {
-  res.locals.userSession = req.session.user
+  res.locals.userSession = req.session.bendahara
   next()
 })
 
 app.use('/', authSession.checkSession, index)
 app.use('/siswa', authSession.checkSession, siswaRoutes)
-app.use('/user', authSession.checkSession, userRoutes)
+app.use('/bendahara', authSession.checkSession, bendaharaRoutes)
 app.use('/perkiraan', authSession.checkSession, perkiraanRoutes)
 app.use('/transaksi', authSession.checkSession, transaksiRoutes)
 app.use('/tunggakan', authSession.checkSession, tunggkanRoutes)
+app.use('/jurnal', authSession.checkSession, jurnalRoutes)
 
 app.listen(process.env.PORT || 3000, () => console.log('Example app listening on port 3000!'))

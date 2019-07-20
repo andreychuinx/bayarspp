@@ -76,20 +76,20 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlSelect1">Type Transaksi</label>
-                    <select name="type_bayar" class="form-control" required>
+                    <select name="type_transaksi" class="form-control" id="typetransaksi" required>
                       <option value="0">-- Select One --</option>
                       <% type_transaksi.forEach((tt) => { %>
-                      <option <% if (tt == transaksi.type_bayar) { %> selected <% } %> value="<%= tt%>"><%= tt%>
+                      <option <% if (tt == transaksi.type_transaksi) { %> selected <% } %> data-id="<%= tt%>" value="<%= tt%>"><%= tt%>
                       </option>
                       <% })  %>
                     </select>
                   </div>
                   <div class="form-group col-md-6" style="padding-left: 0%">
                     <label>Bulan Bayar</label>
-                    <select class="selectpicker form-control" data-live-search="true" name="bayar_bulan[]" multiple>
+                    <select class="selectpicker form-control" data-live-search="true" name="bayar_bulan[]"  id="bayarbulan" multiple>
                       <option value="">--- Select ---</option>
                       <% bulanName.forEach((bn) => { %>
-                      <option <% if (bn == transaksi.bayar_bulan) { %> selected <% } %> data-tokens="<%= bn%>"><%= bn%>
+                      <option <% if (transaksi.bayar_bulan && transaksi.bayar_bulan.split(',').indexOf(bn) >= 0) { %> selected <% } %> data-tokens="<%= bn%>"><%= bn%>
                       </option>
                       <% })  %>
                     </select>
@@ -100,9 +100,9 @@
                         class="form-control" required>
                   </div>
                   <div class="form-group">
-                    <label>Total Bayar</label>
-                    <input name="bayar" value="<%= transaksi.bayar %>" type="text" placeholder="Total Bayar"
-                      class="form-control" required>
+                    <label>Total Jumlah</label>
+                    <input name="jumlah" value="<%= transaksi.jumlah %>" type="text" id="jumlah" placeholder="Total Bayar"
+                      class="form-control" readonly>
                   </div>
                   <button type="submit" class="btn btn-primary">Save</button>
                   <a href="/transaksi" class="btn btn-default">Cancel</a>

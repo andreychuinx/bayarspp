@@ -12,36 +12,36 @@ Router.get('/', (req, res) => {
 })
 
 Router.post('/checkUser', (req, res) => {
-  Model.User.findOne({
+  Model.Bendahara.findOne({
     where: {
-      email: req.body.email,
+      username: req.body.username,
     }
   })
-  .then((user) => {
-    if (user == null) {
+  .then((bendahara) => {
+    if (bendahara == null) {
       res.render('./login', {
         title       : title,
-        errMessage  : 'Email atau Password tidak sesuai !!',
+        errMessage  : 'Username atau Password tidak sesuai !!',
       })
     } else {
-      user.check_password(req.body.password, (isMatch) => {
+      bendahara.check_password(req.body.password, (isMatch) => {
         if (isMatch) {
-          let objUser = {
+          let objBendahara = {
             last_login: new Date(),
           }
-          Model.User.update(objUser, {
+          Model.Bendahara.update(objBendahara, {
             where: {
-              id: user.id
+              id: bendahara.id
             }
           })
           .then(() => {
             req.session.isLogin = true
-            req.session.user = user
+            req.session.bendahara = bendahara
             res.redirect('/')
           })
         } else {
           req.session.isLogin = false
-          req.session.user = undefined
+          req.session.bendahara = undefined
           res.render('./login', {
             title       : title,
             errMessage  : 'Email atau Password tidak sesuai !!',

@@ -1,20 +1,23 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Perkiraans', {
+    return queryInterface.createTable('Jurnals', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      no_perkiraan: {
-        type: Sequelize.INTEGER
-      },
-      nama_perkiraan: {
+      nama_jurnal: {
         type: Sequelize.STRING
       },
-      type_perkiraan: {
+      bendaharaId: {
+        type: Sequelize.INTEGER
+      },
+      tgl_jurnal: {
+        type: Sequelize.DATE
+      },
+      keterangan: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -28,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Perkiraans');
+    return queryInterface.dropTable('Jurnals');
   }
 };

@@ -72,8 +72,8 @@ Router.post('/add', (req, res) => {
 })
 
 Router.post('/edit/:id', (req, res) => {
-  let objSiswa = {
-    nis: req.body.nis,
+	let objSiswa = {
+		nis: req.body.nis,
 		nama: req.body.nama,
 		jurusan: req.body.jurusan,
 		kelas: req.body.kelas,
@@ -83,37 +83,37 @@ Router.post('/edit/:id', (req, res) => {
 		no_telepon: req.body.no_telepon,
 		createdAt: new Date(),
 		updatedAt: new Date()
-  }
-  Model.Siswa.update(objSiswa, {
-    where: {
-      id: req.params.id,
-    }
-  })
-  .then(() => {
-    res.redirect('/siswa')
-  })
-  .catch(err => {
-    Model.Siswa.findByPk(req.params.id)
-    .then(siswa => {
-      res.render('./siswa_add', {
-        title       : title,
-        sidebar     : 'siswa',
-        siswa      : siswa,
-        errMessage  : err.message,
-      })
-    })
-  })
+	}
+	Model.Siswa.update(objSiswa, {
+		where: {
+			id: req.params.id,
+		}
+	})
+		.then(() => {
+			res.redirect('/siswa')
+		})
+		.catch(err => {
+			Model.Siswa.findByPk(req.params.id)
+				.then(siswa => {
+					res.render('./siswa_add', {
+						title: title,
+						sidebar: 'siswa',
+						siswa: siswa,
+						errMessage: err.message,
+					})
+				})
+		})
 })
 
 Router.get('/delete/:id', (req, res) => {
-  Model.Siswa.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-  .then(() => {
-    res.redirect('/siswa')
-  })
+	Model.Siswa.destroy({
+		where: {
+			id: req.params.id
+		}
+	})
+		.then(() => {
+			res.redirect('/siswa')
+		})
 })
 
 

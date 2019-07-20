@@ -8,7 +8,7 @@
                     <img src="/public/images/students.png" alt="Users" width="78" height="78">
                 </div>
                 <div class="col-xs-9 text-right">
-                    <div class="huge">10</div>
+                    <div class="huge"><%= dashboard["total_siswa"] %></div>
                     <div>Total Siswa</div>
                 </div>
             </div>
@@ -30,14 +30,14 @@
                     <img src="/public/images/tunggakan.png" alt="Barang" width="78" height="78">
                 </div>
                 <div class="col-xs-9 text-right">
-                    <div class="huge">15</div>
-                    <div>Total Tunggakan</div>
+                    <div class="huge"><%= dashboard["total_transaksi"] %></div>
+                    <div>Total Transaksi</div>
                 </div>
             </div>
         </div>
-        <a href="/subjects">
+        <a href="/transaksi">
             <div class="panel-footer">
-                <span class="pull-left">View Detail Tunggakan</span>
+                <span class="pull-left">View Detail Transaksi</span>
                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                 <div class="clearfix"></div>
             </div>
@@ -52,12 +52,12 @@
                     <img src="/public/images/bayar.png" alt="Tempat" width="78" height="78">
                 </div>
                 <div class="col-xs-9 text-right">
-                    <div class="huge">14</div>
+                    <div class="huge"><%= dashboard["total_pembayaran"] %></div>
                     <div>Total Pembayaran</div>
                 </div>
             </div>
         </div>
-        <a href="/tempat">
+        <a href="/jurnal">
             <div class="panel-footer">
                 <span class="pull-left">View Detail Pembayaran</span>
                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -74,14 +74,14 @@
                     <img src="/public/images/books.png" alt="Asset" width="78" height="78">
                 </div>
                 <div class="col-xs-9 text-right">
-                    <div class="huge">10</div>
-                    <div>Total Perkiraan</div>
+                    <div class="huge"><%= dashboard["total_bendahara"] %></div>
+                    <div>Total Bendahara</div>
                 </div>
             </div>
         </div>
-        <a href="/students">
+        <a href="/bendahara">
             <div class="panel-footer">
-                <span class="pull-left">View Detail Perkiraan</span>
+                <span class="pull-left">View Detail Bendahara</span>
                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                 <div class="clearfix"></div>
             </div>

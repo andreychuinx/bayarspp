@@ -4,7 +4,7 @@ module.exports = {
 	getMonth: new Date().getMonth(),
 	getYear: new Date().getFullYear(),
 	typeTransaksi: ['SPP', 'Praktek'],
-	spp: 150000,
+	spp: 125000,
 	praktek: 100000,
 	findDiff: (arr, arr2) => {
 		var ret = [];

@@ -18,11 +18,13 @@
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
-    "jszip": "^3.2.2",
+    "jszip": "^2.6.1",
     "mysql2": "^1.6.5",
     "nodemon": "^1.19.1",
+    "office-to-pdf": "^4.0.0",
     "pdfkit": "^0.10.0",
     "sequelize": "^5.9.4",
-    "sequelize-cli": "^5.5.0"
+    "sequelize-cli": "^5.5.0",
+    "word2pdf": "^1.0.7"
   }
 }

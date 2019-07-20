@@ -49,6 +49,7 @@
                         <td class="text-center">
                           <a href="/transaksi/edit/<%= transaksi[i].id %>" class="btn btn-primary btn-circle"><i class="fa fa-edit"></i></a>
                           <a href="/transaksi/delete/<%= transaksi[i].id %>" class="btn btn-danger btn-circle" onclick="return confirm('Are you sure want to delete ?')"><i class="fa fa-remove"></i></a>
+                          <a href="/public/kwitansi_pembayaran_<%= transaksi[i].id %>.pdf" target="_blank" class="btn btn-success btn-circle" ><i class="fa fa-download"></i></a>
                         </td>
                       </tr>
                     <% } %>

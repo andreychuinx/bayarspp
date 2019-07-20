@@ -1,4 +1,5 @@
 'use strict';
+const {writeData} = require('../templates/kwitansi_pembayaran')
 module.exports = (sequelize, DataTypes) => {
   const Transaksi = sequelize.define('Transaksi', {
     siswaId: DataTypes.INTEGER,
@@ -14,6 +15,16 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   }, {});
+  Transaksi.afterCreate((data, options) => {
+    sequelize.models.Siswa.findOne({
+      where: {
+        id: data.siswaId
+      }
+    }).then(siswa => {
+      data.dataValues.Siswa = siswa
+      writeData(data)
+    })
+  })
   Transaksi.associate = function(models) {
     // associations can be defined here
     Transaksi.belongsTo(models.Siswa)

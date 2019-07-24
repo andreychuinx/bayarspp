@@ -51,6 +51,7 @@ Router.get('/detail/:id', (req, res) => {
 				}
 			}
 		}).then(transaksi => {
+			console.log(result[1], 'ini result')
 			res.render('./jurnal_detail', {
 				title: 'Detail Jurnal',
 				sidebar: 'jurnal',
@@ -65,6 +66,7 @@ Router.get('/detail/:id', (req, res) => {
 })
 
 Router.post('/add', (req, res) => {
+	console.log(req.body)
 	let objJurnal = {
 		nama_jurnal: req.body.nama_jurnal,
 		bendaharaId: req.session.bendahara.id,

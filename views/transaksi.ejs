@@ -44,7 +44,7 @@
                         <td><%= transaksi[i].Siswa.kelas %></td>
                         <td><%= transaksi[i].type_transaksi %></td>
                         <td><%= transaksi[i].bayar_bulan %> - <%= transaksi[i].bayar_tahun %></td>
-                        <td><%= transaksi[i].createdAt && new Date(transaksi[i].createdAt).toISOString().slice(0,10) %></td>
+                        <td><%= transaksi[i].tgl_bayar && new Date(transaksi[i].tgl_bayar).toISOString().slice(0,10) %></td>
                         <td><%= transaksi[i].jumlah %></td>
                         <td class="text-center">
                           <a href="/transaksi/edit/<%= transaksi[i].id %>" class="btn btn-primary btn-circle"><i class="fa fa-edit"></i></a>

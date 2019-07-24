@@ -45,7 +45,7 @@
 									<tr class="odd gradeX">
 										<td><a href="/jurnal/detail/<%= jurnals[i].id %>"><%= jurnals[i].id %></a></td>
 										<td><%= jurnals[i].nama_jurnal %></td>
-										<td><%= jurnals[i].tgl_jurnal && new Date(jurnals[i].tgl_jurnal).toISOString().slice(0,10) %></td>
+										<td><%= jurnals[i].tgl_jurnal && new Date(jurnals[i].tgl_jurnal).toLocaleDateString() %></td>
 										<td><%= jurnals[i].Bendahara.username %></td>
 										<td><%= jurnals[i].keterangan %></td>
 										<td class="text-center">

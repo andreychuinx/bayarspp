@@ -46,36 +46,36 @@
 						<div class="form-group">
 
 							<label class="col-md-3">Kas </label>
-							<span><%= detailJurnals.reduce((a, b) => a.debet + b.debet) %> </span>
+							<span><%= detailJurnals.filter(dj => dj.Perkiraan.type_perkiraan === 'kas')[0].debet %> </span>
 						</div>
 						<div class="form-group">
 
 							<label class="col-md-3">Pendapatan </label>
-							<span><%= detailJurnals.reduce((a, b) => a.debet + b.debet) %> </span>
+							<span><%= detailJurnals.filter(dj => dj.Perkiraan.type_perkiraan === 'kas')[0].debet %> </span>
 
 						</div>
 						<h4 style="text-decoration: underline">Pada saat Pembayaran Menunggak </h4>
 						<div class="form-group">
 
 							<label class="col-md-3">Piutang </label>
-							<span><%= detailJurnals.reduce((a, b) => a.kredit + b.kredit) %> </span>
+							<span><%= detailJurnals.filter(dj => dj.Perkiraan.type_perkiraan === 'kas')[0].kredit %> </span>
 						</div>
 						<div class="form-group">
 
 							<label class="col-md-3">Pendapatan </label>
-							<span><%= detailJurnals.reduce((a, b) => a.debet + b.debet) %> </span>
+							<span><%= detailJurnals.filter(dj => dj.Perkiraan.type_perkiraan === 'kas')[0].debet %> </span>
 
 						</div>
 						<h4 style="text-decoration: underline">Pada saat Penerimaan pembayaran menunggak </h4>
 						<div class="form-group">
 
 							<label class="col-md-3">Kas </label>
-							<span><%= detailJurnals.reduce((a, b) => a.debet + b.debet) + detailJurnals.reduce((a, b) => a.kredit + b.kredit) %></span>
+							<span><%= detailJurnals.filter(dj => dj.Perkiraan.type_perkiraan === 'kas')[0].debet + detailJurnals.filter(dj => dj.Perkiraan.type_perkiraan === 'kas')[0].kredit %> </span>
 						</div>
 						<div class="form-group">
 
 							<label class="col-md-3">Piutang </label>
-							<span><%= detailJurnals.reduce((a, b) => a.debet + b.debet) + detailJurnals.reduce((a, b) => a.kredit + b.kredit) %> </span>
+							<span><%= detailJurnals.filter(dj => dj.Perkiraan.type_perkiraan === 'kas')[0].kredit %> </span>
 
 						</div>
 						<br /> <br />

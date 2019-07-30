@@ -1,5 +1,5 @@
 'use strict';
-const {writeData} = require('../templates/kwitansi_pembayaran')
+const { writeData } = require('../templates/kwitansi_pembayaran')
 module.exports = (sequelize, DataTypes) => {
   const Transaksi = sequelize.define('Transaksi', {
     siswaId: DataTypes.INTEGER,
@@ -11,21 +11,21 @@ module.exports = (sequelize, DataTypes) => {
     jumlah: {
       type: DataTypes.INTEGER,
       validate: {
-        isNumeric: { msg: "Data yang di input bukan nomor"}
+        isNumeric: { msg: "Data yang di input bukan nomor" }
       }
     }
   }, {});
-  Transaksi.afterCreate((data, options) => {
-    sequelize.models.Siswa.findOne({
-      where: {
-        id: data.siswaId
-      }
-    }).then(siswa => {
-      data.dataValues.Siswa = siswa
-      writeData(data)
-    })
-  })
-  Transaksi.associate = function(models) {
+  // Transaksi.afterCreate((data, options) => {
+  //   sequelize.models.Siswa.findOne({
+  //     where: {
+  //       id: data.siswaId
+  //     }
+  //   }).then(siswa => {
+  //     data.dataValues.Siswa = siswa
+  //     writeData(data)
+  //   })
+  // })
+  Transaksi.associate = function (models) {
     // associations can be defined here
     Transaksi.belongsTo(models.Siswa)
     Transaksi.belongsTo(models.Bendahara)

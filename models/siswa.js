@@ -10,9 +10,9 @@ module.exports = (sequelize, DataTypes) => {
     alamat: DataTypes.STRING,
     no_telepon: DataTypes.STRING
   }, {});
-  Siswa.associate = function(models) {
+  Siswa.associate = function (models) {
     // associations can be defined here
-    Siswa.hasMany(models.Transaksi)
+    Siswa.hasMany(models.Transaksi, { onDelete: 'cascade' })
   };
   return Siswa;
 };

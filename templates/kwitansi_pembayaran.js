@@ -60,7 +60,6 @@ const writeData = async (data) => {
 }
 
 const convert = async (docx, id) => {
-	console.log('akdwo')
 	try {
 		const data = await word2pdf(docx)
 		fs.writeFileSync(`templates/kwitansi_pembayaran_${id}.docx`, data);

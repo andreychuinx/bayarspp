@@ -12,6 +12,9 @@ const bendaharaRoutes = require('./routes/bendahara')
 const transaksiRoutes = require('./routes/transaksi')
 const tunggkanRoutes = require('./routes/tunggakan')
 const jurnalRoutes = require('./routes/jurnal')
+const laporanPembayaranRoutes = require('./routes/laporan_pembayaran')
+const laporanTunggakanRoutes = require('./routes/laporan_tunggakan')
+const penerimaanKasRoutes = require('./routes/penerimaan_kas')
 const app = express()
 
 
@@ -22,9 +25,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use('/public', express.static(process.cwd() + '/public'))
 app.set('trust proxy', 1)
-app.use(session({ 
-	secret: 'bayar-spp',
- }))
+app.use(session({
+  secret: 'bayar-spp',
+}))
 
 app.use('/login', loginRoutes)
 app.use('/logout', logoutRoutes)
@@ -41,5 +44,8 @@ app.use('/perkiraan', authSession.checkSession, perkiraanRoutes)
 app.use('/transaksi', authSession.checkSession, transaksiRoutes)
 app.use('/tunggakan', authSession.checkSession, tunggkanRoutes)
 app.use('/jurnal', authSession.checkSession, jurnalRoutes)
+app.use('/laporan_pembayaran', authSession.checkSession, laporanPembayaranRoutes)
+app.use('/laporan_tunggakan', authSession.checkSession, laporanTunggakanRoutes)
+app.use('/penerimaan_kas', authSession.checkSession, penerimaanKasRoutes)
 
 app.listen(process.env.PORT || 3000, () => console.log('Example app listening on port 3000!'))

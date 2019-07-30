@@ -64,7 +64,6 @@ module.exports = (sequelize, DataTypes) => {
             sequelize.models.Perkiraan.findAll().then((perkiraans) => {
               perkiraans.forEach(pk => {
                 if (pk.type_perkiraan === 'pendapatan_spp' || pk.type_perkiraan === 'pendapatan_praktek') {
-                  console.log('masuk ke sini')
                   objDetailJurnal.push({
                     jurnalId: data.id,
                     perkiraanId: pk.id,
@@ -72,7 +71,7 @@ module.exports = (sequelize, DataTypes) => {
                     // kredit: pk.type_perkiraan === 'pe' ? siswas.sum('tunggakan_spp') : siswas.sum('tunggakan_praktek')
                     kredit: 0
                   })
-                } else if ( pk.type_perkiraan === 'piutang_spp' || pk.type_perkiraan === 'piutang_praktek') {
+                } else if (pk.type_perkiraan === 'piutang_spp' || pk.type_perkiraan === 'piutang_praktek') {
                   objDetailJurnal.push({
                     jurnalId: data.id,
                     perkiraanId: pk.id,
@@ -87,9 +86,9 @@ module.exports = (sequelize, DataTypes) => {
                     kredit: siswas.sum('tunggakan_spp') + siswas.sum('tunggakan_praktek')
                   })
                 }
-                  
-                
-                  
+
+
+
               })
               return sequelize.models.Detail_jurnal.bulkCreate(objDetailJurnal)
             })
@@ -101,7 +100,6 @@ module.exports = (sequelize, DataTypes) => {
 
   })
   Jurnal.afterUpdate(function (data, options) {
-    console.log('afterupdate')
   })
   return Jurnal;
 };

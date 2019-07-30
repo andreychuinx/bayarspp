@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include partials/metahead %>
+
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <%- include partials/header %>
+            <%- include partials/sidebar %>
+        </nav>
+        <!-- End: Navigation -->
+
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+
+                        <h1 class="page-header"><%= title %></h1>
+
+                        <% if (errMessage) { %>
+                        <div class="alert alert-danger alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <%= errMessage %>
+                        </div>
+                        <% } %>
+
+                        <div class="row">
+                            <form action="/penerimaan_kas" method="get" role="form">
+
+                                <div class="form-group">
+                                    <label>Tanggal </label>
+                                    <input class="form-control" id="date" name="tgl_export_penerimaan"
+                                        placeholder="MM/DD/YYY" type="text" required />
+
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" formtarget="_blank">Export</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End: Page Content -->
+    </div> <!-- /#wrapper -->
+
+    <%- include partials/jsfooter %>
+</body>
+
+</html>

@@ -11,7 +11,7 @@
     </nav>
     <!-- End: Navigation -->
     <%
-        var header = 'Add'
+        var header = 'Tambah'
         var action = 'add'
         if(transaksi){
           header = 'Edit'
@@ -38,16 +38,13 @@
                 <form action="/transaksi/<%=action%>" method="post" role="form">
                   <div class="form-group">
                     <label>Siswa</label>
-                    <select class="selectpicker form-control" data-live-search="true" id="picksiswa" name="id_siswa">
+                    <select class="selectpicker form-control" data-live-search="true" id="picksiswa" name="id_siswa"
+                      required>
                       <option value="">--- Select One ---</option>
                       <% siswa.forEach((sw) => { %>
-                      <option <% if (sw.id == transaksi.siswaId) { %> selected <% } %> 
-                        value="<%= sw.id%>"
-                        data-nis="<%=sw.nis%>"
-                        data-nama="<%=sw.nama%>"
-                        data-kelas="<%=sw.kelas%>"
-                        data-jurusan="<%=sw.jurusan%>"
-                      >
+                      <option <% if (sw.id == transaksi.siswaId) { %> selected <% } %> value="<%= sw.id%>"
+                        data-nis="<%=sw.nis%>" data-nama="<%=sw.nama%>" data-kelas="<%=sw.kelas%>"
+                        data-jurusan="<%=sw.jurusan%>">
                         <%= sw.nis%> - <%=sw.nama%></option>
                       <% })  %>
                     </select>
@@ -71,41 +68,44 @@
                   <div class="form-group">
                     <label>Tgl Bayar</label>
                     <input class="form-control" id="date" name="tgl_bayar" placeholder="MM/DD/YYY" type="text"
-                      value="<%= transaksi.tgl_bayar %>" />
+                      value="<%= transaksi.tgl_bayar %>" required />
 
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlSelect1">Type Transaksi</label>
                     <select name="type_transaksi" class="form-control" id="typetransaksi" required>
-                      <option value="0">-- Select One --</option>
+                      <option value="">-- Select One --</option>
                       <% type_transaksi.forEach((tt) => { %>
-                      <option <% if (tt == transaksi.type_transaksi) { %> selected <% } %> data-id="<%= tt%>" value="<%= tt%>"><%= tt%>
+                      <option <% if (tt == transaksi.type_transaksi) { %> selected <% } %> data-id="<%= tt%>"
+                        value="<%= tt%>"><%= tt%>
                       </option>
                       <% })  %>
                     </select>
                   </div>
                   <div class="form-group col-md-6" style="padding-left: 0%">
                     <label>Bulan Bayar</label>
-                    <select class="selectpicker form-control" data-live-search="true" name="bayar_bulan[]"  id="bayarbulan" multiple>
+                    <select class="selectpicker form-control" data-live-search="true" name="bayar_bulan[]"
+                      id="bayarbulan" multiple required>
                       <option value="">--- Select ---</option>
                       <% bulanName.forEach((bn) => { %>
-                      <option <% if (transaksi.bayar_bulan && transaksi.bayar_bulan.split(',').indexOf(bn) >= 0) { %> selected <% } %> data-tokens="<%= bn%>"><%= bn%>
+                      <option <% if (transaksi.bayar_bulan && transaksi.bayar_bulan.split(',').indexOf(bn) >= 0) { %>
+                        selected <% } %> data-tokens="<%= bn%>"><%= bn%>
                       </option>
                       <% })  %>
                     </select>
                   </div>
                   <div class="form-group col-md-6" style="padding-right: 0%">
-                      <label>Tahun</label>
-                      <input name="bayar_tahun" value="<%= transaksi.bayar_tahun %>" type="text" placeholder="Tahun"
-                        class="form-control" required>
+                    <label>Tahun</label>
+                    <input name="bayar_tahun" value="<%= transaksi.bayar_tahun %>" type="text" placeholder="Tahun"
+                      class="form-control" required>
                   </div>
                   <div class="form-group">
                     <label>Total Jumlah</label>
-                    <input name="jumlah" value="<%= transaksi.jumlah %>" type="text" id="jumlah" placeholder="Total Bayar"
-                      class="form-control" readonly>
+                    <input name="jumlah" value="<%= transaksi.jumlah %>" type="text" id="jumlah"
+                      placeholder="Total Bayar" class="form-control" readonly>
                   </div>
-                  <button type="submit" class="btn btn-primary">Save</button>
-                  <a href="/transaksi" class="btn btn-default">Cancel</a>
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                  <a href="/transaksi" class="btn btn-default">Kembali</a>
                 </form>
               </div>
             </div>

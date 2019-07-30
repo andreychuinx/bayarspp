@@ -1,62 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include partials/metahead %>
-  <body>
-    <div id="wrapper">
-      <!-- Navigation -->
-      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <%- include partials/header %>
-        <%- include partials/sidebar %>
-      </nav>
-      <!-- End: Navigation -->
-      <%
-        var header = 'Add'
+<%- include partials/metahead %>
+
+<body>
+  <div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <%- include partials/header %>
+      <%- include partials/sidebar %>
+    </nav>
+    <!-- End: Navigation -->
+    <%
+        var header = 'Tambah'
         var action = 'add'
         if(perkiraan){
           header = 'Edit'
           action = `edit/${perkiraan.id}`
         }
       %>
-      <!-- Page Content -->
-      <div id="page-wrapper">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-12">
+    <!-- Page Content -->
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
 
-              <h1 class="page-header"><%=header%> <%= title %></h1>
-              <!-- Alert Message -->
-              <% if (errMessage) { %>
-              <div class="alert alert-danger alert-dismissable">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <%= errMessage %>
-              </div>
-              <% } %>
-
-              <div class="row">
-                <div class="col-md-12">
-									<form action="/perkiraan/<%=action%>" method="post" role="form">
-										<div class="form-group">
-                      <label>No Perkiraan</label>
-                      <input name="no_perkiraan" value="<%= perkiraan.no_perkiraan %>" type="text" placeholder="No Perkiraan" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                      <label>Nama Perkiraan</label>
-                      <input name="nama_perkiraan" value="<%= perkiraan.nama_perkiraan %>" type="text" placeholder="Nama Perkiraan" class="form-control" required>
-										</div>
-									
-                    <button type="submit" class="btn btn-primary">Save</button>
-                    <a href="/perkiraan" class="btn btn-default">Cancel</a>
-                  </form>
-                </div>
-              </div>
-
+            <h1 class="page-header"><%=header%> <%= title %></h1>
+            <!-- Alert Message -->
+            <% if (errMessage) { %>
+            <div class="alert alert-danger alert-dismissable">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <%= errMessage %>
             </div>
+            <% } %>
+
+            <div class="row">
+              <div class="col-md-12">
+                <form action="/perkiraan/<%=action%>" method="post" role="form">
+                  <div class="form-group">
+                    <label>No Perkiraan</label>
+                    <input name="no_perkiraan" value="<%= perkiraan.no_perkiraan %>" type="text"
+                      placeholder="No Perkiraan" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Nama Perkiraan</label>
+                    <input name="nama_perkiraan" value="<%= perkiraan.nama_perkiraan %>" type="text"
+                      placeholder="Nama Perkiraan" class="form-control" required>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                  <a href="/perkiraan" class="btn btn-default">Kembali</a>
+                </form>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
-      <!-- End: Page Content -->
-    </div> <!-- /#wrapper -->
+    </div>
+    <!-- End: Page Content -->
+  </div> <!-- /#wrapper -->
 
-    <%- include partials/jsfooter %>
-  </body>
+  <%- include partials/jsfooter %>
+</body>
+
 </html>

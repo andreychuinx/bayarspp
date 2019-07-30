@@ -20,7 +20,7 @@
             <h1 class="page-header"><%= title %></h1>
 
             <p align="right"><a href="/siswa/add" class="btn btn-outline btn-default"><i class="fa fa-file-o"></i>
-                New</a></p>
+                Tambah</a></p>
             <% if (errMessage) { %>
             <div class="alert alert-danger alert-dismissable">
               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -36,8 +36,8 @@
                     <th>Jurusan</th>
                     <th>Kelas</th>
                     <th>Tagihan SPP</th>
-										<th>Tagihan Praktek</th>
-										<th>Total Tagihan</th>
+                    <th>Tagihan Praktek</th>
+                    <th>Total Tagihan</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -48,10 +48,10 @@
                     <td><%= siswa[i].jurusan %></td>
                     <td><%= siswa[i].kelas %></td>
                     <td><%= siswa[i].dataValues.tunggakan_spp %></td>
-										<td><%= siswa[i].dataValues.tunggakan_praktek %></td>
-										<td><%= siswa[i].dataValues.tunggakan_praktek + siswa[i].dataValues.tunggakan_spp %></td>
-										
-                    
+                    <td><%= siswa[i].dataValues.tunggakan_praktek %></td>
+                    <td><%= siswa[i].dataValues.tunggakan_praktek + siswa[i].dataValues.tunggakan_spp %></td>
+
+
                   </tr>
                   <% } %>
                 </tbody>

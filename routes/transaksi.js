@@ -4,20 +4,41 @@ const Model = require('../models')
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const { generate } = require('../helpers/generatePdf')
-const { title, typeTransaksi, getMonth, bulanName } = require('../constant')
+const { title, typeTransaksi, getMonth, bulanName, templateKwitansi } = require('../constant')
+const jsreport = require('jsreport')
 
 Router.get('/', (req, res) => {
-	Model.Transaksi.findAll({
-		include: [Model.Siswa],
-		order: [['createdAt', 'DESC']]
-	})
-		.then(result => {
-			res.render('transaksi', {
-				transaksi: result,
-				title: 'Transaksi Pembayaran',
-				sidebar: 'pembayaran'
-			})
+	const { query } = req
+	if (Object.keys(query).length > 0) {
+		Model.Transaksi.findByPk(query.kwitansi_pembayaran, {
+			include: [Model.Siswa]
 		})
+			.then(result => {
+				jsreport.render({
+					template: {
+						content: templateKwitansi(result),
+						engine: 'handlebars',
+						recipe: 'chrome-pdf'
+					}
+				}).then((out) => {
+					out.stream.pipe(res);
+				})
+			})
+
+	} else {
+		Model.Transaksi.findAll({
+			include: [Model.Siswa],
+			order: [['createdAt', 'DESC']]
+		})
+			.then(result => {
+				res.render('transaksi', {
+					transaksi: result,
+					title: 'Transaksi Pembayaran',
+					sidebar: 'pembayaran'
+				})
+			})
+	}
+
 })
 
 Router.get('/add', (req, res) => {
@@ -38,7 +59,6 @@ Router.get('/add', (req, res) => {
 Router.get('/edit/:id', (req, res) => {
 	Model.Transaksi.findByPk(req.params.id)
 		.then(transaksi => {
-			console.log(transaksi, 'ini trans')
 			Model.Siswa.findAll()
 				.then((siswa) => {
 					res.render('./transaksi_add', {
@@ -56,7 +76,6 @@ Router.get('/edit/:id', (req, res) => {
 
 Router.post('/add', (req, res) => {
 	const { id_siswa, tgl_bayar, bayar_tahun, type_transaksi, jumlah } = req.body
-	console.log(req.body, 'ini jumlah')
 	let objTransaksi = {
 		siswaId: id_siswa,
 		bendaharaId: req.session.bendahara.id,

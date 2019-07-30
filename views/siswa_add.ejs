@@ -11,7 +11,7 @@
     </nav>
     <!-- End: Navigation -->
     <%
-        var header = 'Add'
+        var header = 'Tambah'
         var action = 'add'
         if(siswa){
           header = 'Edit'
@@ -73,7 +73,8 @@
                   </div>
                   <div class="form-group col-md-6" style="padding-right: 0%">
                     <label>Tanggal Lahir</label>
-                    <input class="form-control" id="date" name="tgl_lahir" placeholder="MM/DD/YYY" type="text" value="<%= siswa.tgl_lahir %>"/>
+                    <input class="form-control" id="date" name="tgl_lahir" placeholder="MM/DD/YYY" type="text"
+                      value="<%= siswa.tgl_lahir %>" />
 
                   </div>
                   <div class="form-group">
@@ -87,8 +88,8 @@
                     <input name="no_telepon" value="<%= siswa.no_telepon %>" type="text" placeholder="No Telepon"
                       class="form-control" required>
                   </div>
-                  <button type="submit" class="btn btn-primary">Save</button>
-                  <a href="/siswa" class="btn btn-default">Cancel</a>
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                  <a href="/siswa" class="btn btn-default">Kembali</a>
                 </form>
               </div>
             </div>

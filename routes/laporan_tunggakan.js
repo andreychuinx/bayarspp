@@ -38,14 +38,14 @@ Router.get('/', async (req, res) => {
       horizontal: 'center',
       wrapText: true
     }
-    ws.getCell('A2').value = 'LAPORAN TUNGGAKAN'
+    ws.getCell('A2').value = `LAPORAN TUNGGAKAN ${tgl_export_tunggakan}`
     ws.getCell('A3').value = ''
 
     ws.getColumn('B').width = 20
     ws.getColumn('C').width = 25
     ws.getColumn('D').width = 15
     ws.getColumn('E').width = 25
-    ws.getColumn('F').width = 15
+    ws.getColumn('F').width = 30
     ws.getColumn('G').width = 50
     ws.getColumn('H').width = 50
     ws.getColumn('I').width = 15
@@ -67,7 +67,7 @@ Router.get('/', async (req, res) => {
     ws.mergeCells('E4:H4')
 
     ws.getCell('E5').value = 'TUNGGAKAN SPP'
-    ws.getCell('F5').value = 'TUNGGAKANPRAKTEK'
+    ws.getCell('F5').value = 'TUNGGAKAN PRAKTEK'
     ws.getCell('G5').value = 'TUNGGAKAN BULAN SPP'
     ws.getCell('H5').value = 'TUNGGAKAN BULAN PRAKTEK'
     for (let i = 0; i < data.length; i++) {

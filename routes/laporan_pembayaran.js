@@ -21,8 +21,9 @@ Router.get('/', (req, res) => {
     }).then((result) => {
       let data = []
       let totalJumlah = 0
+      console.log(result, 'ini resul')
       result.forEach((r, i) => {
-        let dataRow = [i + 1, r.tgl_bayar && new Date(r.tgl_bayar).toLocaleDateString(), r.Siswa.nama, r.Siswa.kelas, r.type_transaksi === 'SPP' ? r.jumlah : '', r.type_transaksi === 'PRAKTEK' ? r.jumlah : '', `${r.bayar_bulan} - ${r.bayar_tahun}`, r.jumlah]
+        let dataRow = [i + 1, r.tgl_bayar && new Date(r.tgl_bayar).toLocaleDateString(), r.Siswa.nama, r.Siswa.kelas, r.type_transaksi === 'SPP' ? r.jumlah : '', r.type_transaksi === 'Praktek' ? r.jumlah : '', `${r.bayar_bulan} - ${r.bayar_tahun}`, r.jumlah]
         totalJumlah += r.jumlah
         data.push(dataRow)
       })
@@ -42,7 +43,7 @@ Router.get('/', (req, res) => {
         horizontal: 'center',
         wrapText: true
       }
-      ws.getCell('A2').value = 'LAPORAN PEMBAYARAN'
+      ws.getCell('A2').value = `LAPORAN PEMBAYARAN ${date_export}`
       ws.getCell('A3').value = ''
 
       ws.getColumn('B').width = 20

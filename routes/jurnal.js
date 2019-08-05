@@ -2,7 +2,7 @@ const express = require('express')
 const Sequelize = require('sequelize')
 const Model = require('../models')
 const Router = express.Router()
-const title = 'Jurna'
+const title = 'Jurnal'
 const { getYear } = require('../constant')
 const Op = require('sequelize').Op
 

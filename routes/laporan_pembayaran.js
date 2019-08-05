@@ -43,7 +43,7 @@ Router.get('/', (req, res) => {
         horizontal: 'center',
         wrapText: true
       }
-      ws.getCell('A2').value = `LAPORAN PEMBAYARAN SPP DAN PRAKTEK ${date_export}`
+      ws.getCell('A2').value = `LAPORAN PEMASUKAN SPP DAN PRAKTEK SMK NIDA EL ADABI ${date_export}`
       ws.getCell('A3').value = ''
 
       ws.getColumn('B').width = 20

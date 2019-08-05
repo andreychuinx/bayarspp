@@ -38,7 +38,7 @@ Router.get('/', async (req, res) => {
       horizontal: 'center',
       wrapText: true
     }
-    ws.getCell('A2').value = `LAPORAN TUNGGAKAN SPP DAN PRAKTEK ${tgl_export_tunggakan}`
+    ws.getCell('A2').value = `LAPORAN TUNGGAKAN SPP DAN PRAKTEK SMK NIDA EL ADABI ${tgl_export_tunggakan}`
     ws.getCell('A3').value = ''
 
     ws.getColumn('B').width = 20

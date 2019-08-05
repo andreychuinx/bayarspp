@@ -2,7 +2,7 @@ const express = require('express')
 const Model = require('../models')
 const Sequelize = require('sequelize')
 const Router = express.Router()
-const title = 'BAYARSPP'
+const title = 'Pembayaran SPP SMK Nida El Adabi'
 
 Router.get('/', (req, res) => {
   res.render('./login', {

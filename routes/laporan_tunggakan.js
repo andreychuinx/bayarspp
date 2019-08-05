@@ -105,7 +105,7 @@ Router.get('/', async (req, res) => {
 
   } else {
     res.render('laporan_tunggakan', {
-      title: 'Export Laporan Tunggakan',
+      title: 'Laporan Tunggakan SPP dan Praktek',
       sidebar: 'laporan_tunggakan',
       errMessage: null
     })

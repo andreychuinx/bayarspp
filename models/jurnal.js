@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
   Jurnal.associate = function (models) {
     // associations can be defined here
     Jurnal.belongsTo(models.Bendahara)
+    Jurnal.hasMany(models.Detail_jurnal, {
+      onDelete: 'CASCADE',
+      hooks: true
+    })
 
   };
   Jurnal.afterCreate(function (data, options) {

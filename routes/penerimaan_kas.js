@@ -51,7 +51,7 @@ Router.get('/', async (req, res) => {
     })
   } else {
     res.render('penerimaan_kas', {
-      title: 'Export Laporan Penerimaan Kas',
+      title: 'Laporan Penerimaan Kas',
       sidebar: 'penerimaan_kas',
       errMessage: null
     })

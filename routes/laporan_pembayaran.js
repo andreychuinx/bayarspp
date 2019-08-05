@@ -109,7 +109,7 @@ Router.get('/', (req, res) => {
 
   } else {
     res.render('laporan_pembayaran', {
-      title: 'Export Laporan Pembayaran',
+      title: 'Laporan Pembayaran SPP dan Praktek',
       sidebar: 'laporan_pembayaran',
       errMessage: null
     })

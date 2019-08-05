@@ -5,7 +5,7 @@ const Router = express.Router()
 const { typeTransaksi, getMonth, getYear, bulanName, findDiff, spp, praktek } = require('../constant')
 const { countTunggakan } = require('../helpers/countTunggakan')
 
-const title = 'Tunggakan Management'
+const title = 'Data Tunggakan SPP dan Praktek'
 
 Router.get('/', (req, res) => {
 	countTunggakan().then(values => {

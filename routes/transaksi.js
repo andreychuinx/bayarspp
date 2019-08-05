@@ -33,7 +33,7 @@ Router.get('/', (req, res) => {
 			.then(result => {
 				res.render('transaksi', {
 					transaksi: result,
-					title: 'Transaksi Pembayaran',
+					title: 'Transaksi Pembayaran SPP dan Praktek',
 					sidebar: 'pembayaran'
 				})
 			})
@@ -45,7 +45,7 @@ Router.get('/add', (req, res) => {
 	Model.Siswa.findAll()
 		.then((siswa) => {
 			res.render('./transaksi_add', {
-				title: 'Transaksi',
+				title: 'Pembayaran',
 				sidebar: 'transaksi',
 				transaksi: false,
 				type_transaksi: typeTransaksi,
@@ -62,7 +62,7 @@ Router.get('/edit/:id', (req, res) => {
 			Model.Siswa.findAll()
 				.then((siswa) => {
 					res.render('./transaksi_add', {
-						title: title,
+						title: 'Pembayaran',
 						sidebar: 'transaksi',
 						transaksi,
 						type_transaksi: typeTransaksi,

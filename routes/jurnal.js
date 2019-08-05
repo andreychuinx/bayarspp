@@ -2,7 +2,7 @@ const express = require('express')
 const Sequelize = require('sequelize')
 const Model = require('../models')
 const Router = express.Router()
-const title = 'Data Jurnal'
+const title = 'Jurna'
 const { getYear } = require('../constant')
 const Op = require('sequelize').Op
 
@@ -24,7 +24,7 @@ Router.get('/', (req, res) => {
 
 Router.get('/add', (req, res) => {
 	res.render('./jurnal_add', {
-		title: 'Add Jurnal',
+		title: 'Form Jurnal',
 		sidebar: 'jurnal',
 		jurnal: false,
 		errMessage: null,
@@ -84,6 +84,17 @@ Router.post('/add', (req, res) => {
 				jurnal: false,
 				errMessage: err.message,
 			})
+		})
+})
+
+Router.get('/delete/:id', (req, res) => {
+	Model.Jurnal.destroy({
+		where: {
+			id: req.params.id
+		}
+	})
+		.then(() => {
+			res.redirect('/jurnal')
 		})
 })
 

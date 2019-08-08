@@ -17,7 +17,7 @@ Router.get('/', (req, res) => {
 
 Router.get('/add', (req, res) => {
   res.render('./bendahara_add', {
-    title: title,
+    title: 'Form Data Bendahara',
     sidebar: 'bendahara',
     bendahara: false,
     errMessage: null,

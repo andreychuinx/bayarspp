@@ -21,7 +21,7 @@ Router.get('/add', (req, res) => {
 		siswa: false,
 		jenis_kelamin: ['Laki-laki', 'Perempuan'],
 		errMessage: false,
-		title: 'New Siswa',
+		title: 'Form Data Siswa',
 		sidebar: 'siswa'
 	})
 })

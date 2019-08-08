@@ -20,7 +20,7 @@ Router.get('/add', (req, res) => {
 	res.render('perkiraan_add', {
 		perkiraan: false,
 		errMessage: false,
-		title: 'New Perkiraan',
+		title: 'Form Data Perkiraan',
 		sidebar: 'perkiraan'
 	})
 })
@@ -62,42 +62,42 @@ Router.post('/add', (req, res) => {
 })
 
 Router.post('/edit/:id', (req, res) => {
-  let objPerkiraan = {
-    no_perkiraan: req.body.no_perkiraan,
+	let objPerkiraan = {
+		no_perkiraan: req.body.no_perkiraan,
 		nama_perkiraan: req.body.nama_perkiraan,
 		createdAt: new Date(),
 		updatedAt: new Date()
-  }
-  Model.Perkiraan.update(objPerkiraan, {
-    where: {
-      id: req.params.id,
-    }
-  })
-  .then(() => {
-    res.redirect('/perkiraan')
-  })
-  .catch(err => {
-    Model.Perkiraan.findByPk(req.params.id)
-    .then(perkiraan => {
-      res.render('./perkiraan_add', {
-        title       : title,
-        sidebar     : 'perkiraan',
-        perkiraan      : perkiraan,
-        errMessage  : err.message,
-      })
-    })
-  })
+	}
+	Model.Perkiraan.update(objPerkiraan, {
+		where: {
+			id: req.params.id,
+		}
+	})
+		.then(() => {
+			res.redirect('/perkiraan')
+		})
+		.catch(err => {
+			Model.Perkiraan.findByPk(req.params.id)
+				.then(perkiraan => {
+					res.render('./perkiraan_add', {
+						title: title,
+						sidebar: 'perkiraan',
+						perkiraan: perkiraan,
+						errMessage: err.message,
+					})
+				})
+		})
 })
 
 Router.get('/delete/:id', (req, res) => {
-  Model.Perkiraan.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-  .then(() => {
-    res.redirect('/perkiraan')
-  })
+	Model.Perkiraan.destroy({
+		where: {
+			id: req.params.id
+		}
+	})
+		.then(() => {
+			res.redirect('/perkiraan')
+		})
 })
 
 

@@ -20,7 +20,7 @@
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "jsreport": "^2.5.0",
-    "jszip": "^2.6.1",
+    "jszip": "^2.7.0",
     "mysql2": "^1.6.5",
     "nodemon": "^1.19.1",
     "office-to-pdf": "^4.0.0",
